@@ -1,2 +1,17 @@
 k3s-config.yaml
 *.ps1
+*auto.tfvars
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
+terraform.tfstate.backup
+
+# Terraform
+.terraform/
+*.tfvars
+*.tfstate
+*.tfstate.backup
+*.lock.hcl
+
+# Terraform providers
+terraform-provider-proxmox/
