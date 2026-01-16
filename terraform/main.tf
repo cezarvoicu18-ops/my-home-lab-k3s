@@ -38,7 +38,7 @@ resource "proxmox_vm_qemu" "worker-01" {
 
   # cloud-init user/password
   # enable guest agent so Proxmox can query the guest and cloud-init can use metadata
-  agent        = 1
+  agent         = 1
   agent_timeout = 300
   # request DHCP via cloud-init
   ipconfig0 = "ip=dhcp"
@@ -88,7 +88,7 @@ resource "proxmox_vm_qemu" "worker-02" {
 
   # cloud-init user/password
   # enable guest agent so Proxmox can query the guest and cloud-init can use metadata
-  agent        = 1
+  agent         = 1
   agent_timeout = 300
   # request DHCP via cloud-init
   ipconfig0 = "ip=dhcp"

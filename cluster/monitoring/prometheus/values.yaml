@@ -1,0 +1,36 @@
+# Prometheus Stack
+# This file contains customizations for my homelab
+# Base values come from: prometheus-community/kube-prometheus-stack
+# Reference: https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+
+grafana:
+  # Admin password is managed separately via deployment script and env vars
+  persistence:
+    enabled: true
+    size: 5Gi
+    storageClassName: "local-path"
+
+prometheus:
+  prometheusSpec:
+    retention: 15d
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 20Gi
+    
+    # Enable scraping of all ServiceMonitors and PodMonitors
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+
+alertmanager:
+  alertmanagerSpec:
+    storage:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 5Gi
